@@ -110,19 +110,19 @@
                                 </div>
                                 <div class="col-sm-6 card-body blog-details align-self">
 
-                                   <span class="label-blue  mb-2 ">
+                                   <span class="label-blue  mb-1">
                                         <a href="{{ route('topics', ['category' => $post->category->slug]) }}">
                                             {{ $post->category->name }}
                                         </a>
                                    </span>
-                                   <span class="label-blue  mb-2 ">
+                                   <span class="label-blue  ">
                                         <a href="{{ route('posts', ['topic' => $post->topic->id]) }}">
                                             {{ $post->topic->name }}
                                         </a>
                                    </span>
 
                                     <div class="ml-2">
-                                        <a href="{{ route('post.show', ['post' => $post->id])}}" class="blog-desc ">
+                                        <a href="{{ route('post.show', ['post' => $post->id])}}" class="blog-desc mt-1 mb-1">
                                             {{ $post->title }}
                                         </a>
                                     </div>
