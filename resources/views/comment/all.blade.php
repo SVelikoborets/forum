@@ -22,6 +22,7 @@
                                                  class="img-fluid rounded-circle"
                                                  alt="Avatar">
                                         @endif
+
                                         <ul class="blog-meta">
                                             <li>
                                                 <a href="{{ route('profile', ['user' => $comment->user->id]) }}">{{$comment->user->name}}</a>

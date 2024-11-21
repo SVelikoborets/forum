@@ -58,13 +58,13 @@ class HomeController extends Controller
             $image = $request->file('image');
             $imageName = time().'.'.$image->getClientOriginalName();
             $path = 'avatars/'.$imageName;
-            Storage::putFileAs('public/avatars',$image, $imageName);
+            Storage::putFileAs('avatars',$image, $imageName);
         }
 
         $user = Auth::user();
 
         if ($user->avatar) {
-            Storage::delete('public/' . $user->avatar);
+            Storage::delete($user->avatar);
         }
 
         $user->avatar = $path;
