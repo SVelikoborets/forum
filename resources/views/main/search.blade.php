@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+@section('title','Search results')
 @section('content')
 
     <div class="w3l-homeblock2 w3l-homeblock5 py-1">

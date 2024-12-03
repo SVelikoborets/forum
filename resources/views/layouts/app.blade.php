@@ -5,9 +5,10 @@
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <title>Forum</title>
-
+    <title>@yield('title') | Best beauty-forum.</title>
+    <meta name="description" content="Join the best beauty-forum to discuss the latest trends in beauty, skincare,wellness, and more. Share your experiences and get advice from beauty enthusiasts worldwide.">
+    <meta name="keywords" content="beauty,forum,wellness,makeup">
+    <link rel="icon" href="{{ asset('assets/images/forum-icon.png') }}" type="image/png" style="height: 16px;width: 16px">
     <link href="//fonts.googleapis.com/css2?family=Hind:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link href="//fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('assets/css/style-starter.css') }}">

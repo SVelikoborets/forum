@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('title','Edit topic')
 @section('content')
 
     <div class="w3l-contact-10 py-5" id="contact">

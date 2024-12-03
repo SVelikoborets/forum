@@ -16,7 +16,8 @@ return new class extends Migration
                 ->onDelete('cascade');
             $table->foreignId('response_id')
                 ->nullable()
-                ->constrained('users');
+                ->constrained('users')
+                ->onDelete('cascade');
 
             $table->foreignId('post_id')
                 ->constrained()

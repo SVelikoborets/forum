@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use App\Models\Topic;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -18,16 +19,18 @@ class HomeController extends Controller
 
     public function index()
     {
-       $posts = Post::where('user_id', Auth::user()->id)
+       $user = Auth::user();
+
+       $posts = Post::where('user_id', $user->id)
            ->whereHas('topic.user', function ($query) {
                 $query->where('banned', false);
             })
            ->with(['topic','category'])->latest()->paginate(4,['*'], 'post_page');
 
-       $topics = Topic::where('user_id', Auth::user()->id)
+       $topics = Topic::where('user_id', $user->id)
             ->paginate(7,['*'],'topic_page');
 
-       $top = Post::where('user_id', Auth::user()->id)
+       $top = Post::where('user_id', $user->id)
            ->whereHas('topic.user', function ($query) {
                $query->where('banned', 0);
            })
@@ -41,6 +44,7 @@ class HomeController extends Controller
             'posts' => $posts,
             'topics' => $topics,
             'top' => $top,
+           'lastSeen' => Carbon::parse($user->last_seen),
         ]);
     }
 

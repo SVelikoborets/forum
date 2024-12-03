@@ -1,7 +1,8 @@
 @extends('layouts.app')
-
+@section('title','Login')
 @section('content')
-<div class="container-fluid py-5 ">
+<section class="w3l-homeblock1 py-sm-5 py-4">
+<div class="container-fluid py-5">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
@@ -75,4 +76,5 @@
         </div>
     </div>
 </div>
+</section>
 @endsection

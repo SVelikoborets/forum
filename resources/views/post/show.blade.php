@@ -1,8 +1,9 @@
 @extends('layouts.app')
+@section('title', $post->title )
 @section('content')
     <section class="w3l-testimonials" id="testimonials">
 
-        <div class="container pb-lg-5 pt-2 pb-5 mt-4">
+        <div class="container pb-lg-5 pt-2 pb-2 mt-4">
             <div class="mb-md-0 mb-sm-5 mb-4">
                 <div class="item">
                     <div class="row">
@@ -44,8 +45,8 @@
                             </p>
                         </div>
 
-                        <div class="img-circle  mt-4">
-                            <div class="author align-items-center">
+                        <div class="img-circle align-content-sm-center">
+                            <div class="author align-items-center  px-4 py-4">
                                 @if($post->user->avatar)
                                     <img src="{{ Storage::url($post->user->avatar) }}"
                                          class="img-fluid rounded-circle"
@@ -68,7 +69,9 @@
                                         <span class="meta-value">{{ $post->created_at->format('F j, Y') }} </span>
                                     </li>
                                     <li class="meta-item blog-lesson">
-                                       <span class="meta-value ml-2"><span class="fa fa-clock-o"></span> 1 min</span>
+                                       <span class="meta-value ml-2"><span class="fa fa-clock-o"></span>
+                                           {{ $post->user->isOnline() ? 'Online' : 'Offline' }}
+                                       </span>
                                     </li>
                                 </ul>
                             </div>
@@ -113,7 +116,8 @@
                                             <li class="meta-item blog-lesson">
                                                 <span class="meta-value">
                                                     {{ $comment->created_at->format('F j, Y') }}</span>. <span
-                                                    class="meta-value ml-2"><span class="fa fa-clock-o"></span> 1 min
+                                                    class="meta-value ml-2"><span class="fa fa-clock-o"></span>
+                                                    {{ $comment->user->isOnline() ? 'Online' : 'Offline' }}
                                                 </span>
                                             </li>
                                         </ul>
@@ -168,8 +172,8 @@
             @endauth
 
             @guest
-                <div class="col-sm-12 text-center align-self mt-4">
-                    <h3 class="section-title-left align-content-center pl-2 mb-3 ">
+                <div class="col-sm-12 align-self mt-4">
+                    <h3 class="section-title-left align-content-lg-center pl-2 mb-3 ">
                         - <a href="{{ route( 'register' ) }}"> Register</a>
                         or
                         <a href="{{ route( 'login' ) }}">login</a>

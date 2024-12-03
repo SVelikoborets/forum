@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+@section('title','Home')
 @section('content')
 
     <div class="w3l-testimonials" id="testimonials">
@@ -13,6 +13,14 @@
                                 <div class="card bg-transparent ">
                                     <div class="card-body ">
                                         <p class="text-center">{{ session('status') }}</p>
+
+                                        @if (!auth()->user()->hasVerifiedEmail())
+                                            <p>
+                                                Your email address is not verified.
+                                                <a href="{{ route('verification.notice') }}">Click here to verify</a>.
+                                            </p>
+                                        @endif
+
                                     </div>
                                 </div>
                             </div>
@@ -49,7 +57,7 @@
                                         </h2>
                                     </li>
                                     <li >
-                                        <span> July 13, 2020 </span>.
+                                        <span>Last activity {{Auth::user()->last_seen ? $lastSeen->diffForHumans() : 'in November' }}</span>.
                                         <span class=" ml-2"><span class="fa fa-clock-o"></span> Online</span>
                                         <h5 class="text-center">Welcome to Forum! Reed, write, comment, repeat!</h5>
                                     </li>
@@ -108,8 +116,7 @@
                                         </div>
                                     </a>
                                 </div>
-                                <div class="col-sm-6 card-body blog-details align-self">
-
+                                <div class="col-sm-6 py-md-1 card-body blog-details align-self py-md-1">
                                    <span class="label-blue  mb-1">
                                         <a href="{{ route('topics', ['category' => $post->category->slug]) }}">
                                             {{ $post->category->name }}
@@ -123,7 +130,7 @@
 
                                     <div class="ml-2">
                                         <a href="{{ route('post.show', ['post' => $post->id])}}" class="blog-desc mt-1 mb-1">
-                                            {{ $post->title }}
+                                            {{ Str::limit($post->title, 24) }}
                                         </a>
                                     </div>
 

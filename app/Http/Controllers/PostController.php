@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Topic;
 use App\Models\Post;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -35,7 +36,7 @@ class PostController extends Controller
        $post = Post::where('id', $post)
            ->with(['user', 'comments' => function ($query) {
                $query->with(['user' => function ($query) {
-                   $query->select('id', 'name','avatar');
+                   $query->select('id', 'name','avatar','last_seen');
                }, 'respondedUser' => function ($query) {
                    $query->select('id', 'name');
                }])->latest();
@@ -43,7 +44,6 @@ class PostController extends Controller
 
        return view('post.show', ['post' => $post ]);
    }
-
 
     public function create($step='first', $selected=null)
     {
@@ -84,7 +84,7 @@ class PostController extends Controller
             $image = $request->file('image');
             $imageName = time().'.'.$image->getClientOriginalName();
             $path = 'posts/'.$imageName;
-            Storage::putFileAs('public/posts',$image, $imageName);
+            Storage::putFileAs('posts',$image, $imageName);
         }
         else{
             $path=null;
@@ -115,11 +115,11 @@ class PostController extends Controller
         $validated = $request->validate(self::POST_VALIDATOR);
 
         if($request->hasFile('image')){
-            Storage::delete('public/'.$post->image);
+            Storage::delete($post->image);
             $image = $request->file('image');
             $imageName = time().'.'.$image->getClientOriginalName();
             $path = 'posts/'.$imageName;
-            Storage::putFileAs('public/posts',$image,$imageName);
+            Storage::putFileAs('posts',$image,$imageName);
         }else{
             $path = $post->image;
         }
@@ -150,6 +150,7 @@ class PostController extends Controller
     public function destroy(Request $request,Post $post)
     {
         $this->authorize('deletePost', $post);
+        Storage::delete($post->image);
         $post->delete();
         $request->session()->flash('status', 'Post '. $post->title .' was deleted.');
         return redirect()->route('home');

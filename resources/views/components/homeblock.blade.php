@@ -1,10 +1,10 @@
-<div class="w3l-homeblock2 py-5">
+<div class="w3l-homeblock2 py-2">
     <div class="container py-lg-5 py-md-4">
         <div class="row">
 
             <div class="col-lg-4 trending mt-lg-0 mt-5">
                 <div class="topics">
-                    <h3 class="section-title-left mb-4"> My Topics</h3>
+                    <h3 class="section-title-left mb-4 mt-2"> My Topics</h3>
                     @if($topics)
                         <div class="mt-4 left-right bg-clr-white p-3">
                             <h3 class="section-title-left align-self pl-2 mb-sm-0 mb-3">Add topic</h3>
@@ -28,7 +28,7 @@
                 </div>
                 @if($topics->hasPages())
                     <div class="mt-md-4">
-                        <ul class="site-pagination text-center">
+                        <ul class="site-pagination text-center my-3">
                             @for ($i = 1; $i <= $topics->lastPage(); $i++)
                                 <li>
                                     @if ($i === $topics->currentPage())
@@ -55,7 +55,7 @@
             </div>
 
             <div class="col-lg-8">
-                <h3 class="section-title-left mb-4">Popular</h3>
+                <h3 class="section-title-left mb-4 mt-2">Popular</h3>
                 <div class="row">
                     @foreach($top as $post)
                         <div class="col-lg-6 col-md-6 mt-md-0 mt-sm-5 mt-4 mb-3"  >
@@ -109,7 +109,8 @@
                                                     {{ $post->created_at->format('d.m.Y') }}
                                                 </span>.
                                                 <span class="meta-value ml-2">
-                                                    <span class="fa fa-clock-o"></span> 1 min
+                                                    <span class="fa fa-clock-o"></span>
+                                                    Online
                                                 </span>
                                             </li>
                                         </ul>

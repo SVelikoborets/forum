@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('title','Response')
 @section('content')
     <div class="container mb-4">
         <div class=" col-12 mt-4 form-inner-cont">

@@ -6,6 +6,7 @@ use App\Models\Category;
 use App\Models\Post;
 use App\Models\Topic;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class MainController extends Controller
@@ -55,6 +56,7 @@ class MainController extends Controller
         [
             'user' => $user,
             'topicsList' => $user->topics,
+            'lastSeen' => Carbon::parse($user->last_seen),
             'posts' => $user->posts()->paginate(8),
         ]);
     }

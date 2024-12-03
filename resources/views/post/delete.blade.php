@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+@section('title','Delete post')
 @section('content')
     <div class="overlay" id="overlay"></div>
     <div class="modal-form " id="deleteModal">

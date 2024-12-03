@@ -22,9 +22,9 @@ Route::get('/post/{post?}', [PostController::class,'show'])->name('post.show');
 
 Route::get('/comments/{post?}', [CommentController::class,'showComments'])->name('post.comments');
 
-Auth::routes();
+Auth::routes(['verify' => true]);
 
-Route::group(['middleware' => ['auth', 'check.banned']], function () {
+Route::group(['middleware' => ['auth', 'check.banned','verified']], function () {
     Route::get('/home', [HomeController::class, 'index'])->name('home');
 
     Route::get('/home/create/{step?}/{selected?}', [PostController::class,'create'])->name('post.create');

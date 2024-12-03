@@ -3,7 +3,7 @@
 
         <nav class="navbar navbar-expand-lg navbar-light fill px-lg-0 py-0 px-sm-3 px-0">
             <a class="navbar-brand" href="{{route('main')}}">
-                <span class="fa fa-newspaper-o"></span> Forum</a>
+                <span class="fa fa-newspaper-o"></span>2BForum</a>
                 <button class="navbar-toggler collapsed" type="button" data-toggle="collapse"
                         data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                         aria-label="Toggle navigation">

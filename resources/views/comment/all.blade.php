@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('title','Comments')
 @section('content')
     <div class="w3l-homeblock2 w3l-homeblock5 py-1">
         <div class="container py-lg-3 ">
@@ -29,7 +30,9 @@
                                             </li>
                                             <li class="meta-item blog-lesson">
                                                 <span class="meta-value">{{ $comment->created_at->format('d.m.Y') }}</span>.
-                                                <span class="meta-value ml-2"><span class="fa fa-clock-o"></span> 1 min</span>
+                                                <span class="meta-value ml-2"><span class="fa fa-clock-o"></span>
+                                                    {{ $comment->user->isOnline() ? 'Online' : 'Offline' }}
+                                                </span>
                                             </li>
                                         </ul>
                                     </div>

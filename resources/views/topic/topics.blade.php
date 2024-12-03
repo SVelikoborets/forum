@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('title', $category->name)
 @section('content')
     <div class="w3l-homeblock2 py-3">
         <div class="container  py-md-4">

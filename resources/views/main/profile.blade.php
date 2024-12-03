@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('title',$user->name)
 @section('content')
 
     <div class="w3l-testimonials" id="testimonials">
@@ -30,8 +31,11 @@
                                         <h2 class="section-title-left ">{{$user->name}}</h2>
                                     </li>
                                     <li>
-                                        <span class=""> July 13, 2020 </span>.
-                                        <span class=" ml-2"><span class="fa fa-clock-o"></span> Online</span>
+                                        <span class=""> Last activity {{ $user->last_seen ? $lastSeen->diffForHumans() : 'in November' }} </span>.
+                                        <span class="ml-2">
+                                            <span class="fa fa-clock-o"></span>
+                                            {{ $user->isOnline() ? 'Online' : 'Offline' }}
+                                        </span>
                                         @if(count($topicsList)>0)
                                             <h5 class="text-center">Creator of topics</h5>
                                             @foreach($topicsList as $topic)
@@ -78,7 +82,7 @@
                                             </div>
                                         </a>
                                     </div>
-                                    <div class="col-sm-7 card-body blog-details align-self">
+                                    <div class="col-sm-7 card-body blog-details align-self py-md-1">
                                         <div >
                                             <span class="label-blue mb-1">
                                                 <a href="{{ route('topics', ['category' => $post->category->slug]) }}">
@@ -91,8 +95,8 @@
                                                 </a>
                                            </span>
                                         </div>
-                                        <a href="{{ route('post.show', ['post' => $post->id]) }}" class="blog-desc ml-2 ">
-                                            {{$post->title}}
+                                        <a href="{{ route('post.show', ['post' => $post->id]) }}" class="blog-desc ml-2 mt-1 mb-1 ">
+                                            {{ Str::limit($post->title, 30) }}
                                         </a>
                                     </div>
                                 </div>
@@ -125,7 +129,7 @@
                 @endif
 
                 @auth
-                    @if($user->writeInTopicBy(Auth::user()))
+                    @if($user->writeInTopicBy(Auth::user()) &&  Auth::user()->id !== $user->id)
                         <form action="{{ route('block', ['user' => $user->id]) }}" method="post" >
                             @csrf
                             @method('PATCH')

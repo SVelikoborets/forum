@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('title',$topic->name)
 @section('content')
     <div class="w3l-homeblock2 w3l-homeblock5 py-3">
         <div class="container pt-md-4 pb-md-5">
@@ -105,7 +106,9 @@
                                             </li>
                                             <li class="meta-item blog-lesson">
                                                 <span class="meta-value">{{ $post->created_at->format('d.m.Y') }}</span>.
-                                                <span class="meta-value ml-2"><span class="fa fa-clock-o"></span> 1 min</span>
+                                                <span class="meta-value ml-2"><span class="fa fa-clock-o"></span>
+                                                    {{ $post->user->isOnline() ? 'Online' : 'Offline' }}
+                                                </span>
                                             </li>
                                         </ul>
                                     </div>

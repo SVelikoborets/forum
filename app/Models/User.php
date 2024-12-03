@@ -3,16 +3,20 @@
 namespace App\Models;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Support\Carbon;
 
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail
 {
     use HasApiTokens, Notifiable;
 
     protected $fillable = [
         'name',
         'email',
+        'last_seen',
+        'email_verified_at',
         'password',
         'avatar',
         'banned'
@@ -67,6 +71,12 @@ class User extends Authenticatable
     public function writeInTopicBy($author)
     {
         return $this->posts()->whereIn('topic_id', $author->topics()->pluck('id'))->exists();
+    }
+
+    public function isOnline()
+    {
+       $last_seen = Carbon::parse($this->last_seen);
+        return $this->last_seen && $last_seen->gt(Carbon::now()->subMinutes(5));
     }
 
 }

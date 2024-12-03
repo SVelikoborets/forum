@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('title','Delete')
 @section('content')
     <section class="w3l-testimonials" id="testimonials">
         <div class="container pb-lg-5 pt-2 pb-5 mt-4">

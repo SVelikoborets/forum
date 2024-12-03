@@ -31,15 +31,15 @@
                                     </div>
                                 </a>
                             </div>
-                            <div class="col-sm-6 card-body blog-details align-self">
+                            <div class="col-sm-6  card-body blog-details align-self py-2">
 
                                 <span class="label-blue">
                                     <a href="{{ route('posts', ['topic' => $post->topic->id]) }}">
                                         {{$post->topic->name}}
                                     </a>
                                 </span>
-                                <a href="{{ route('post.show', ['post' => $post->id]) }}" class="blog-desc mb-0">
-                                    {{$post->title}}
+                                <a href="{{ route('post.show', ['post' => $post->id]) }}" class="blog-desc ">
+                                    {{ Str::limit($post->title, 60) }}
                                 </a>
 
                             </div>
