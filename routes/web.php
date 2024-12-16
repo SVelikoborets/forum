@@ -8,7 +8,6 @@ use App\Http\Controllers\TopicController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
-
 Route::get('/', [MainController::class,'index'])->name('main');
 Route::get('/search', [MainController::class,'search'])->name('search');
 Route::get('/user/{user}', [MainController::class, 'profile'])->name('profile');

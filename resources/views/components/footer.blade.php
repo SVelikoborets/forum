@@ -16,7 +16,7 @@
                             <ul>
                                 <li><a href="https://velikoborets-portfolio.ru">Portfolio</a></li>
                                 <li><a href="https://kinoklad.velikoborets-portfolio.ru">KinoKlad</a></li>
-                                <li><a href="https://t.me/ms_velik">Telegram</a></li>
+
                             </ul>
                         </div>
                         <div class="col-sm-4 col-6 footer-list-28">
@@ -34,10 +34,14 @@
                         <div class="col-sm-4 col-6 footer-list-28 mt-sm-0 mt-4">
                             <h6 class="footer-title-28">Social Media</h6>
                             <ul class="social-icons">
-                                <li class="facebook">
-                                    <a href="#facebook"><span class="fa fa-facebook"></span> Facebook</a></li>
-                                <li class="linkedin"> <a href="#linkedin"><span class="fa fa-linkedin"></span> Linkedin</a></li>
-                                <li class="dribbble"><a href="#dribbble"><span class="fa fa-dribbble"></span> Dribbble</a></li>
+                                <li class="telegram">
+                                    <a href="https://t.me/ms_velik">
+                                        <span class="fa fa-telegram"></span> Telegram </a>
+                                </li>
+                                <li class="github">
+                                    <a href="https://github.com/SVelikoborets/forum">
+                                        <span class="fa fa-github"></span> GitHub </a>
+                                </li>
                             </ul>
                         </div>
                     </div>
